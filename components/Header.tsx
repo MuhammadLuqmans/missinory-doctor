@@ -5,11 +5,18 @@ interface NavLink {
   label: string;
 }
 
+// const navLinks: NavLink[] = [
+//   { href: "/about", label: "About" },
+//   { href: "/hospitals", label: "Hospital Tours" },
+//   { href: "/needs", label: "Missionary Needs" },
+//   { href: "/news", label: "News" },
+// ];
+
 const navLinks: NavLink[] = [
-  { href: "/about", label: "About" },
+  { href: "#", label: "About" },
   { href: "/hospitals", label: "Hospital Tours" },
-  { href: "/needs", label: "Missionary Needs" },
-  { href: "/news", label: "News" },
+  { href: "#", label: "Missionary Needs" },
+  { href: "#", label: "News" },
 ];
 
 interface HeaderProps {

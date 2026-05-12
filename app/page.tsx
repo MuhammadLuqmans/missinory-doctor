@@ -60,17 +60,47 @@ export default function HomePage() {
 
   return (
     <>
+      <section className="relative overflow-hidden border-b border-hair">
       <Header />
 
-      <section className="border-b border-hair py-24 text-center md:py-[88px]">
-        <div className="container-page">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-terra/[0.12] via-bone/70 to-paper"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-48 -top-48 h-[640px] w-[640px] rounded-full bg-terra/20 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-48 top-1/3 h-[520px] w-[520px] rounded-full bg-moss/15 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-40 left-1/3 h-[420px] w-[420px] rounded-full bg-terra/10 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"
+          style={{
+            backgroundImage:
+              "radial-gradient(#1F1B14 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+          }}
+        />
+
+        <div className="container-page relative py-24 text-center md:py-[112px]">
           <Reveal>
-            <Eyebrow className="mb-8 normal-case tracking-[0.18em]">
-              Powered by Giving Tree Projects · 501(c)(3)
-            </Eyebrow>
+            <div className="mb-8 flex items-center justify-center gap-3">
+              <span aria-hidden className="h-px w-10 bg-terra/70" />
+              <Eyebrow className="m-0 normal-case tracking-[0.18em]">
+                Powered by Giving Tree Projects · 501(c)(3)
+              </Eyebrow>
+              <span aria-hidden className="h-px w-10 bg-terra/70" />
+            </div>
           </Reveal>
           <Reveal delay={80}>
-            <h1 className="mx-auto max-w-[14ch] font-serif text-[clamp(48px,7.5vw,108px)] font-light leading-[1.02] tracking-[-0.035em]">
+            <h1 className="mx-auto max-w-[14ch] font-serif text-[clamp(48px,7.5vw,108px)] font-light leading-[1.02] tracking-[-0.035em] text-ink">
               Discover your calling.
               <br />
               <em className="italic text-terra">Fund a need.</em>
@@ -94,34 +124,32 @@ export default function HomePage() {
               </Button>
             </div>
           </Reveal>
+
+          <div className="mt-20 grid grid-cols-1 gap-5 border-t border-hair/70 pt-9 sm:grid-cols-3 sm:gap-0">
+            {heroStats.map((stat, i) => (
+              <Reveal
+                key={stat.label}
+                delay={i * 100}
+                className={[
+                  "px-0 text-center sm:px-8",
+                  i < heroStats.length - 1
+                    ? "sm:border-r sm:border-hair/70"
+                    : "",
+                  i === 0 ? "sm:pl-0" : "",
+                  i === heroStats.length - 1 ? "sm:pr-0" : "",
+                ].join(" ")}
+              >
+                <strong className="mb-2 block font-serif text-[48px] font-light italic leading-none tracking-tight text-ink">
+                  <CountUp value={stat.value} />
+                </strong>
+                <span className="font-mono text-[13px] uppercase tracking-[0.14em] text-mute">
+                  {stat.label}
+                </span>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
-
-      <div className="container-page">
-        <div className="grid grid-cols-1 gap-5 border-b border-hair py-9 sm:grid-cols-3 sm:gap-0">
-          {heroStats.map((stat, i) => (
-            <Reveal
-              key={stat.label}
-              delay={i * 100}
-              className={[
-                "px-0 text-center sm:px-8",
-                i < heroStats.length - 1
-                  ? "sm:border-r sm:border-hair"
-                  : "",
-                i === 0 ? "sm:pl-0" : "",
-                i === heroStats.length - 1 ? "sm:pr-0" : "",
-              ].join(" ")}
-            >
-              <strong className="mb-2 block font-serif text-[48px] font-light italic leading-none tracking-tight text-ink">
-                <CountUp value={stat.value} />
-              </strong>
-              <span className="font-mono text-[13px] uppercase tracking-[0.14em] text-mute">
-                {stat.label}
-              </span>
-            </Reveal>
-          ))}
-        </div>
-      </div>
 
       <section className="py-[88px]">
         <div className="container-page">
