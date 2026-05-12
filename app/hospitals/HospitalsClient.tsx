@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import FilterChips from "@/components/FilterChips";
 import HospitalCard from "@/components/HospitalCard";
+import Reveal from "@/components/Reveal";
 import type { HospitalSummary } from "@/lib/types";
 
 type SortOption =
@@ -205,9 +206,15 @@ export default function HospitalsClient({ hospitals }: Props) {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-x-8 gap-y-11 pb-12 sm:grid-cols-2 lg:grid-cols-3">
-              {inRegion.map((h) => (
-                <HospitalCard key={h.slug} hospital={h} />
+            <div className="grid grid-cols-1 items-stretch gap-x-8 gap-y-11 pb-12 sm:grid-cols-2 lg:grid-cols-3">
+              {inRegion.map((h, i) => (
+                <Reveal
+                  key={h.slug}
+                  delay={Math.min(i, 5) * 70}
+                  className="h-full"
+                >
+                  <HospitalCard hospital={h} />
+                </Reveal>
               ))}
             </div>
 

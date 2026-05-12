@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import FilterChips from "@/components/FilterChips";
 import NeedCard from "@/components/NeedCard";
+import Reveal from "@/components/Reveal";
 import type { NeedCardData } from "@/lib/types";
 
 type SortOption =
@@ -83,12 +84,18 @@ export default function NeedsClient({ needs }: Props) {
         </div>
       </div>
 
-      <section className="container-page grid grid-cols-1 gap-x-8 gap-y-11 py-14 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="container-page grid grid-cols-1 items-stretch gap-x-8 gap-y-11 py-14 sm:grid-cols-2 lg:grid-cols-3">
         <div className="col-span-full -mb-3.5 text-[14.5px] text-mute">
           Showing {filtered.length} of {needs.length} needs
         </div>
-        {filtered.map((need) => (
-          <NeedCard key={need.slug} need={need} />
+        {filtered.map((need, i) => (
+          <Reveal
+            key={need.slug}
+            delay={Math.min(i, 5) * 70}
+            className="h-full"
+          >
+            <NeedCard need={need} />
+          </Reveal>
         ))}
         {filtered.length === 0 && (
           <div className="col-span-full py-20 text-center text-mute">

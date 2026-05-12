@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
+import CountUp from "./CountUp";
 import ProgressBar from "./ProgressBar";
 import { formatMoney, percentLabel } from "@/lib/format";
 
@@ -108,12 +109,8 @@ export default function DonationAside({
       <div className="rounded-[18px] border border-hair bg-bone p-[30px]">
         <div className="mb-2 font-serif text-[48px] font-light leading-none tracking-tight">
           ${" "}
-          <em
-            className={`not-italic ${
-              variant === "urgent" ? "text-terra" : "text-terra"
-            }`}
-          >
-            {raised.toLocaleString("en-US")}
+          <em className="not-italic text-terra">
+            <CountUp value={raised} duration={1600} />
           </em>
         </div>
         <div className="mb-[18px] text-[15.5px] text-mute">
@@ -140,7 +137,7 @@ export default function DonationAside({
           </div>
           <div>
             <strong className="mb-[2px] block text-[16px] font-medium text-ink">
-              {donors.toLocaleString()}
+              <CountUp value={donors} duration={1200} />
             </strong>
             donors
           </div>

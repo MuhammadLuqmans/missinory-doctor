@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Button from "@/components/Button";
+import CountUp from "@/components/CountUp";
 import Eyebrow from "@/components/Eyebrow";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HospitalCard from "@/components/HospitalCard";
 import NeedCard from "@/components/NeedCard";
+import Reveal from "@/components/Reveal";
 import { hospitals, needs } from "@/lib/data";
 
 const featuredHospitalSlugs = ["tenwek", "galmi", "loma-de-luz"];
@@ -15,9 +17,9 @@ const featuredNeedSlugs = [
 ];
 
 const heroStats = [
-  { value: "68", label: "Hospitals in the network" },
-  { value: "41", label: "Countries · Africa, Asia, Americas" },
-  { value: "15", label: "Active missionary needs" },
+  { value: 68, label: "Hospitals in the network" },
+  { value: 41, label: "Countries · Africa, Asia, Americas" },
+  { value: 15, label: "Active missionary needs" },
 ];
 
 const paths = [
@@ -62,36 +64,45 @@ export default function HomePage() {
 
       <section className="border-b border-hair py-24 text-center md:py-[88px]">
         <div className="container-page">
-          <Eyebrow className="mb-8 normal-case tracking-[0.18em]">
-            Powered by Giving Tree Projects · 501(c)(3)
-          </Eyebrow>
-          <h1 className="mx-auto max-w-[14ch] font-serif text-[clamp(48px,7.5vw,108px)] font-light leading-[1.02] tracking-[-0.035em]">
-            Discover your calling.
-            <br />
-            <em className="italic text-terra">Fund a need.</em>
-            <br />
-            Go serve.
-          </h1>
-          <p className="mx-auto mt-9 max-w-[50ch] text-[21px] font-light leading-[1.5] text-ink-2">
-            A catalog of Christian medical mission hospitals worldwide. For
-            those called to serve, those moved to give.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Button href="/hospitals" variant="primary">
-              Tour the hospitals
-            </Button>
-            <Button href="/needs" variant="ghost">
-              See missionary needs
-            </Button>
-          </div>
+          <Reveal>
+            <Eyebrow className="mb-8 normal-case tracking-[0.18em]">
+              Powered by Giving Tree Projects · 501(c)(3)
+            </Eyebrow>
+          </Reveal>
+          <Reveal delay={80}>
+            <h1 className="mx-auto max-w-[14ch] font-serif text-[clamp(48px,7.5vw,108px)] font-light leading-[1.02] tracking-[-0.035em]">
+              Discover your calling.
+              <br />
+              <em className="italic text-terra">Fund a need.</em>
+              <br />
+              Go serve.
+            </h1>
+          </Reveal>
+          <Reveal delay={160}>
+            <p className="mx-auto mt-9 max-w-[50ch] text-[21px] font-light leading-[1.5] text-ink-2">
+              A catalog of Christian medical mission hospitals worldwide. For
+              those called to serve, those moved to give.
+            </p>
+          </Reveal>
+          <Reveal delay={240}>
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
+              <Button href="/hospitals" variant="primary">
+                Tour the hospitals
+              </Button>
+              <Button href="/needs" variant="ghost">
+                See missionary needs
+              </Button>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       <div className="container-page">
         <div className="grid grid-cols-1 gap-5 border-b border-hair py-9 sm:grid-cols-3 sm:gap-0">
           {heroStats.map((stat, i) => (
-            <div
-              key={stat.value}
+            <Reveal
+              key={stat.label}
+              delay={i * 100}
               className={[
                 "px-0 text-center sm:px-8",
                 i < heroStats.length - 1
@@ -102,12 +113,12 @@ export default function HomePage() {
               ].join(" ")}
             >
               <strong className="mb-2 block font-serif text-[48px] font-light italic leading-none tracking-tight text-ink">
-                {stat.value}
+                <CountUp value={stat.value} />
               </strong>
               <span className="font-mono text-[13px] uppercase tracking-[0.14em] text-mute">
                 {stat.label}
               </span>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -115,22 +126,28 @@ export default function HomePage() {
       <section className="py-[88px]">
         <div className="container-page">
           <div className="flex flex-wrap items-end justify-between gap-8 pb-10">
-            <h2 className="max-w-[14ch] font-serif text-[clamp(38px,5vw,60px)] font-light leading-none tracking-tight">
-              Hospitals in the <em className="italic text-terra">network</em>.
-            </h2>
-            <Link
-              href="/hospitals"
-              className="group inline-flex items-center gap-2 font-mono text-[13px] uppercase tracking-[0.15em] text-terra transition-colors hover:text-terra-deep"
-            >
-              Tour all 68
-              <span className="transition-transform duration-200 group-hover:translate-x-1">
-                →
-              </span>
-            </Link>
+            <Reveal>
+              <h2 className="max-w-[14ch] font-serif text-[clamp(38px,5vw,60px)] font-light leading-none tracking-tight">
+                Hospitals in the <em className="italic text-terra">network</em>.
+              </h2>
+            </Reveal>
+            <Reveal delay={120}>
+              <Link
+                href="/hospitals"
+                className="group inline-flex items-center gap-2 font-mono text-[13px] uppercase tracking-[0.15em] text-terra transition-colors hover:text-terra-deep"
+              >
+                Tour all 68
+                <span className="transition-transform duration-200 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
+            </Reveal>
           </div>
-          <div className="grid grid-cols-1 gap-x-8 gap-y-11 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredHospitals.map((h) => (
-              <HospitalCard key={h.slug} hospital={h} />
+          <div className="grid grid-cols-1 items-stretch gap-x-8 gap-y-11 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredHospitals.map((h, i) => (
+              <Reveal key={h.slug} delay={i * 90} className="h-full">
+                <HospitalCard hospital={h} />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -140,8 +157,9 @@ export default function HomePage() {
         <div className="container-page">
           <div className="grid grid-cols-1 border-y border-hair lg:grid-cols-3">
             {paths.map((p, idx) => (
-              <div
+              <Reveal
                 key={p.num}
+                delay={idx * 110}
                 className={[
                   "flex flex-col py-14",
                   idx < paths.length - 1
@@ -154,7 +172,8 @@ export default function HomePage() {
                   {p.num}
                 </div>
                 <h3 className="mb-[18px] font-serif text-[36px] font-light italic leading-[1.05] tracking-tight">
-                  {p.title} <em className="not-italic text-terra">{p.titleEm}</em>.
+                  {p.title}{" "}
+                  <em className="not-italic text-terra">{p.titleEm}</em>.
                 </h3>
                 <p className="mb-6 flex-grow text-[17px] leading-[1.6] text-ink-2">
                   {p.body}
@@ -168,7 +187,7 @@ export default function HomePage() {
                     →
                   </span>
                 </Link>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -177,23 +196,29 @@ export default function HomePage() {
       <section className="py-[88px]">
         <div className="container-page">
           <div className="flex flex-wrap items-end justify-between gap-8 pb-10">
-            <h2 className="max-w-[14ch] font-serif text-[clamp(38px,5vw,60px)] font-light leading-none tracking-tight">
-              Active{" "}
-              <em className="italic text-terra">missionary needs</em>.
-            </h2>
-            <Link
-              href="/needs"
-              className="group inline-flex items-center gap-2 font-mono text-[13px] uppercase tracking-[0.15em] text-terra transition-colors hover:text-terra-deep"
-            >
-              See all 15
-              <span className="transition-transform duration-200 group-hover:translate-x-1">
-                →
-              </span>
-            </Link>
+            <Reveal>
+              <h2 className="max-w-[14ch] font-serif text-[clamp(38px,5vw,60px)] font-light leading-none tracking-tight">
+                Active{" "}
+                <em className="italic text-terra">missionary needs</em>.
+              </h2>
+            </Reveal>
+            <Reveal delay={120}>
+              <Link
+                href="/needs"
+                className="group inline-flex items-center gap-2 font-mono text-[13px] uppercase tracking-[0.15em] text-terra transition-colors hover:text-terra-deep"
+              >
+                See all 15
+                <span className="transition-transform duration-200 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
+            </Reveal>
           </div>
-          <div className="grid grid-cols-1 gap-x-8 gap-y-11 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredNeeds.map((need) => (
-              <NeedCard key={need.slug} need={need} />
+          <div className="grid grid-cols-1 items-stretch gap-x-8 gap-y-11 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredNeeds.map((need, i) => (
+              <Reveal key={need.slug} delay={i * 90} className="h-full">
+                <NeedCard need={need} />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -202,13 +227,15 @@ export default function HomePage() {
       <section className="border-t border-hair bg-bone py-[88px]">
         <div className="container-page">
           <div className="grid items-center gap-16 lg:grid-cols-[1fr_1.4fr]">
-            <div
-              className="aspect-[4/5] rounded-[18px] bg-hair bg-cover bg-center"
-              style={{
-                backgroundImage: `url(https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=900&q=80&auto=format&fit=crop)`,
-              }}
-            />
-            <div>
+            <Reveal>
+              <div
+                className="aspect-[4/5] rounded-[18px] bg-hair bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=900&q=80&auto=format&fit=crop)`,
+                }}
+              />
+            </Reveal>
+            <Reveal delay={120}>
               <Eyebrow className="mb-5">From the field</Eyebrow>
               <blockquote className="max-w-[24ch] font-serif text-[clamp(28px,3.6vw,42px)] font-light italic leading-[1.2] tracking-tight text-ink">
                 &ldquo;The cath lab paid for itself in{" "}
@@ -231,28 +258,32 @@ export default function HomePage() {
                   →
                 </span>
               </Link>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       <section className="border-t border-hair py-24 text-center">
         <div className="container-page">
-          <h2 className="mx-auto max-w-[14ch] font-serif text-[clamp(40px,5.5vw,72px)] font-light leading-[1.05] tracking-tight">
-            Discover your calling.
-            <br />
-            <em className="italic text-terra">Fund a need.</em>
-            <br />
-            Go serve.
-          </h2>
-          <div className="mt-9 flex flex-wrap justify-center gap-3">
-            <Button href="/hospitals" variant="primary">
-              Tour the hospitals
-            </Button>
-            <Button href="/needs" variant="ghost">
-              See missionary needs
-            </Button>
-          </div>
+          <Reveal>
+            <h2 className="mx-auto max-w-[14ch] font-serif text-[clamp(40px,5.5vw,72px)] font-light leading-[1.05] tracking-tight">
+              Discover your calling.
+              <br />
+              <em className="italic text-terra">Fund a need.</em>
+              <br />
+              Go serve.
+            </h2>
+          </Reveal>
+          <Reveal delay={140}>
+            <div className="mt-9 flex flex-wrap justify-center gap-3">
+              <Button href="/hospitals" variant="primary">
+                Tour the hospitals
+              </Button>
+              <Button href="/needs" variant="ghost">
+                See missionary needs
+              </Button>
+            </div>
+          </Reveal>
         </div>
       </section>
 

@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import CountUp from "@/components/CountUp";
 import Eyebrow from "@/components/Eyebrow";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ProgressBar from "@/components/ProgressBar";
+import Reveal from "@/components/Reveal";
 import RichText from "@/components/RichText";
 import {
   getHospital,
@@ -52,29 +54,37 @@ export default function HospitalDetailPage({ params }: PageProps) {
       </div>
 
       <section className="container-page pb-14 pt-8">
-        <Eyebrow className="mb-7">
-          {hospital.location} · {hospital.country}
-          {detail
-            ? ` · Africa Gospel Church · Founded ${hospital.founded}`
-            : ` · Founded ${hospital.founded}`}
-        </Eyebrow>
-        <h1 className="mb-8 max-w-[18ch] font-serif text-[clamp(52px,8vw,108px)] font-light italic leading-none tracking-[-0.03em]">
-          {hospital.name.replace(/ Hospital$/, "")}{" "}
-          {hospital.name.endsWith(" Hospital") && (
-            <em className="not-italic text-terra">Hospital</em>
-          )}
-          .
-        </h1>
-        <p className="max-w-[54ch] text-[21px] font-light leading-[1.5] text-ink-2">
-          {hospital.blurb}
-        </p>
+        <Reveal>
+          <Eyebrow className="mb-7">
+            {hospital.location} · {hospital.country}
+            {detail
+              ? ` · Africa Gospel Church · Founded ${hospital.founded}`
+              : ` · Founded ${hospital.founded}`}
+          </Eyebrow>
+        </Reveal>
+        <Reveal delay={80}>
+          <h1 className="mb-8 max-w-[18ch] font-serif text-[clamp(52px,8vw,108px)] font-light italic leading-none tracking-[-0.03em]">
+            {hospital.name.replace(/ Hospital$/, "")}{" "}
+            {hospital.name.endsWith(" Hospital") && (
+              <em className="not-italic text-terra">Hospital</em>
+            )}
+            .
+          </h1>
+        </Reveal>
+        <Reveal delay={160}>
+          <p className="max-w-[54ch] text-[21px] font-light leading-[1.5] text-ink-2">
+            {hospital.blurb}
+          </p>
+        </Reveal>
       </section>
 
       <div className="container-page">
-        <div
-          className="aspect-[21/9] rounded-[18px] bg-hair bg-cover bg-center"
-          style={{ backgroundImage: `url(${hospital.imageUrl})` }}
-        />
+        <Reveal delay={220}>
+          <div
+            className="aspect-[21/9] rounded-[18px] bg-hair bg-cover bg-center"
+            style={{ backgroundImage: `url(${hospital.imageUrl})` }}
+          />
+        </Reveal>
       </div>
 
       <div className="container-page">
@@ -156,39 +166,44 @@ function DetailedHospital({
 }) {
   return (
     <>
-      <section>
-        <Eyebrow className="mb-5">Origin &amp; mission</Eyebrow>
-        <p className="mb-7 max-w-[48ch] font-serif text-[25px] font-light italic leading-[1.4] text-ink">
-          “{detail.motto}”
-        </p>
-        {detail.origin.map((p, i) => (
-          <p
-            key={i}
-            className="mb-5 max-w-[62ch] text-[18px] leading-[1.7] text-ink-2"
-          >
-            {p}
+      <Reveal>
+        <section>
+          <Eyebrow className="mb-5">Origin &amp; mission</Eyebrow>
+          <p className="mb-7 max-w-[48ch] font-serif text-[25px] font-light italic leading-[1.4] text-ink">
+            “{detail.motto}”
           </p>
-        ))}
-      </section>
-
-      <section className="border-t border-hair pt-16">
-        <Eyebrow className="mb-5">The hospital</Eyebrow>
-        <div className="mt-8 grid gap-3 sm:grid-cols-[1.4fr_1fr_1fr] sm:grid-rows-[280px_280px]">
-          {detail.galleryUrls.slice(0, 5).map((url, i) => (
-            <div
-              key={url}
-              className={[
-                "overflow-hidden rounded-[14px] bg-hair bg-cover bg-center transition-transform duration-500 hover:scale-[1.012]",
-                i === 0 ? "sm:row-span-2" : "aspect-[4/3] sm:aspect-auto",
-              ].join(" ")}
-              style={{ backgroundImage: `url(${url})` }}
-            />
+          {detail.origin.map((p, i) => (
+            <p
+              key={i}
+              className="mb-5 max-w-[62ch] text-[18px] leading-[1.7] text-ink-2"
+            >
+              {p}
+            </p>
           ))}
-        </div>
-      </section>
+        </section>
+      </Reveal>
 
-      <section className="border-t border-hair pt-16">
-        <Eyebrow className="mb-5">Capacity &amp; technology</Eyebrow>
+      <Reveal>
+        <section className="border-t border-hair pt-16">
+          <Eyebrow className="mb-5">The hospital</Eyebrow>
+          <div className="mt-8 grid gap-3 sm:grid-cols-[1.4fr_1fr_1fr] sm:grid-rows-[280px_280px]">
+            {detail.galleryUrls.slice(0, 5).map((url, i) => (
+              <div
+                key={url}
+                className={[
+                  "overflow-hidden rounded-[14px] bg-hair bg-cover bg-center transition-transform duration-500 hover:scale-[1.012]",
+                  i === 0 ? "sm:row-span-2" : "aspect-[4/3] sm:aspect-auto",
+                ].join(" ")}
+                style={{ backgroundImage: `url(${url})` }}
+              />
+            ))}
+          </div>
+        </section>
+      </Reveal>
+
+      <Reveal>
+        <section className="border-t border-hair pt-16">
+          <Eyebrow className="mb-5">Capacity &amp; technology</Eyebrow>
         <h2 className="mb-7 max-w-[22ch] font-serif text-[clamp(34px,4.5vw,52px)] font-light leading-[1.1] tracking-tight">
           On the <em className="italic">campus</em>.
         </h2>
@@ -198,8 +213,9 @@ function DetailedHospital({
 
         <div className="my-8 grid grid-cols-1 border-y border-hair sm:grid-cols-3">
           {detail.bigNumbers.map((n, i) => (
-            <div
+            <Reveal
               key={n.label}
+              delay={i * 110}
               className={[
                 "py-7",
                 i < detail.bigNumbers.length - 1
@@ -209,20 +225,26 @@ function DetailedHospital({
               ].join(" ")}
             >
               <strong className="mb-2.5 block font-serif text-[52px] font-light italic leading-none tracking-tight text-ink">
-                {n.value}
+                <CountUp
+                  value={n.value}
+                  formatKind={n.formatKind}
+                  suffix={n.suffix}
+                />
               </strong>
               <span className="font-mono text-[13px] uppercase tracking-[0.12em] text-mute">
                 {n.label}
               </span>
-            </div>
+            </Reveal>
           ))}
         </div>
 
-        <InfoList items={detail.capacityInfo} />
-      </section>
+          <InfoList items={detail.capacityInfo} />
+        </section>
+      </Reveal>
 
-      <section className="border-t border-hair pt-16">
-        <Eyebrow className="mb-5">Services</Eyebrow>
+      <Reveal>
+        <section className="border-t border-hair pt-16">
+          <Eyebrow className="mb-5">Services</Eyebrow>
         <h2 className="mb-7 max-w-[22ch] font-serif text-[clamp(34px,4.5vw,52px)] font-light leading-[1.1] tracking-tight">
           What the hospital <em className="italic">offers</em>.
         </h2>
@@ -255,10 +277,12 @@ function DetailedHospital({
             </span>
           ))}
         </div>
-      </section>
+        </section>
+      </Reveal>
 
-      <section className="border-t border-hair pt-16">
-        <Eyebrow className="mb-5">Training &amp; education</Eyebrow>
+      <Reveal>
+        <section className="border-t border-hair pt-16">
+          <Eyebrow className="mb-5">Training &amp; education</Eyebrow>
         <h2 className="mb-7 max-w-[22ch] font-serif text-[clamp(34px,4.5vw,52px)] font-light leading-[1.1] tracking-tight">
           A <em className="italic">teaching hospital</em>.
         </h2>
@@ -269,11 +293,13 @@ function DetailedHospital({
             className="mb-5 max-w-[62ch] text-[18px] leading-[1.7] text-ink-2"
           />
         ))}
-        <InfoList items={detail.trainingInfo} />
-      </section>
+          <InfoList items={detail.trainingInfo} />
+        </section>
+      </Reveal>
 
-      <section className="border-t border-hair pt-16">
-        <Eyebrow className="mb-5">Where we need volunteers</Eyebrow>
+      <Reveal>
+        <section className="border-t border-hair pt-16">
+          <Eyebrow className="mb-5">Where we need volunteers</Eyebrow>
         <h2 className="mb-7 max-w-[22ch] font-serif text-[clamp(34px,4.5vw,52px)] font-light leading-[1.1] tracking-tight">
           Active <em className="italic">staff needs</em>.
         </h2>
@@ -299,17 +325,19 @@ function DetailedHospital({
           <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border-[1.5px] border-ink font-serif text-base italic text-ink">
             i
           </span>
-          <RichText
-            text={detail.tracksNote}
-            className="m-0 max-w-none text-[16.5px] leading-[1.6] text-ink-2"
-          />
-        </div>
-      </section>
+            <RichText
+              text={detail.tracksNote}
+              className="m-0 max-w-none text-[16.5px] leading-[1.6] text-ink-2"
+            />
+          </div>
+        </section>
+      </Reveal>
 
-      <section className="border-t border-hair pt-16">
-        <Eyebrow className="mb-5">
-          Open missionary needs · {tenwekActiveNeeds.length} active
-        </Eyebrow>
+      <Reveal>
+        <section className="border-t border-hair pt-16">
+          <Eyebrow className="mb-5">
+            Open missionary needs · {tenwekActiveNeeds.length} active
+          </Eyebrow>
         <h2 className="mb-7 max-w-[22ch] font-serif text-[clamp(34px,4.5vw,52px)] font-light leading-[1.1] tracking-tight">
           Active <em className="italic">projects</em>.
         </h2>
@@ -357,10 +385,12 @@ function DetailedHospital({
             </Link>
           ))}
         </div>
-      </section>
+        </section>
+      </Reveal>
 
-      <section className="border-t border-hair pt-16">
-        <Eyebrow className="mb-5">Living at {detail.glance.find(g => g.key === "Town")?.value.split(" ")[0] ?? "the hospital"}</Eyebrow>
+      <Reveal>
+        <section className="border-t border-hair pt-16">
+          <Eyebrow className="mb-5">Living at {detail.glance.find(g => g.key === "Town")?.value.split(" ")[0] ?? "the hospital"}</Eyebrow>
         <h2 className="mb-7 max-w-[22ch] font-serif text-[clamp(34px,4.5vw,52px)] font-light leading-[1.1] tracking-tight">
           Practical <em className="italic">information</em>.
         </h2>
@@ -385,10 +415,12 @@ function DetailedHospital({
             </div>
           ))}
         </div>
-      </section>
+        </section>
+      </Reveal>
 
-      <section className="border-t border-hair pt-16">
-        <Eyebrow className="mb-5">Sending agencies</Eyebrow>
+      <Reveal>
+        <section className="border-t border-hair pt-16">
+          <Eyebrow className="mb-5">Sending agencies</Eyebrow>
         <h2 className="mb-7 max-w-[22ch] font-serif text-[clamp(34px,4.5vw,52px)] font-light leading-[1.1] tracking-tight">
           Who <em className="italic">routes</em> here.
         </h2>
@@ -419,29 +451,34 @@ function DetailedHospital({
             </div>
           ))}
         </div>
-      </section>
+        </section>
+      </Reveal>
 
-      <section className="border-t border-hair pt-16">
-        <Eyebrow className="mb-5">Spiritual life &amp; community</Eyebrow>
+      <Reveal>
+        <section className="border-t border-hair pt-16">
+          <Eyebrow className="mb-5">Spiritual life &amp; community</Eyebrow>
         <h2 className="mb-7 max-w-[22ch] font-serif text-[clamp(34px,4.5vw,52px)] font-light leading-[1.1] tracking-tight">
           More than a <em className="italic">hospital</em>.
         </h2>
-        {detail.spiritualParagraphs.map((p, i) => (
-          <RichText
-            key={i}
-            text={p}
-            className="mb-5 max-w-[62ch] text-[18px] leading-[1.7] text-ink-2"
-          />
-        ))}
-      </section>
+          {detail.spiritualParagraphs.map((p, i) => (
+            <RichText
+              key={i}
+              text={p}
+              className="mb-5 max-w-[62ch] text-[18px] leading-[1.7] text-ink-2"
+            />
+          ))}
+        </section>
+      </Reveal>
 
-      <section className="border-t border-hair pt-16">
-        <Eyebrow className="mb-5">Common questions</Eyebrow>
-        <h2 className="mb-7 max-w-[22ch] font-serif text-[clamp(34px,4.5vw,52px)] font-light leading-[1.1] tracking-tight">
-          Honest <em className="italic">answers</em>.
-        </h2>
-        <FAQ items={detail.faqs} />
-      </section>
+      <Reveal>
+        <section className="border-t border-hair pt-16">
+          <Eyebrow className="mb-5">Common questions</Eyebrow>
+          <h2 className="mb-7 max-w-[22ch] font-serif text-[clamp(34px,4.5vw,52px)] font-light leading-[1.1] tracking-tight">
+            Honest <em className="italic">answers</em>.
+          </h2>
+          <FAQ items={detail.faqs} />
+        </section>
+      </Reveal>
     </>
   );
 }

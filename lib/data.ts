@@ -770,7 +770,15 @@ export interface HospitalDetailContent {
   origin: string[];
   galleryUrls: string[];
   capacityIntro: string;
-  bigNumbers: { label: string; value: string }[];
+  bigNumbers: {
+    label: string;
+    /** Numeric target — used for the count-up. */
+    value: number;
+    /** Display format. Default integer with commas. */
+    formatKind?: "default" | "k" | "m";
+    /** Optional suffix to append (e.g. "+"). */
+    suffix?: string;
+  }[];
   capacityInfo: { key: string; value: string }[];
   servicesIntro: string;
   services: string[];
@@ -805,9 +813,14 @@ export const tenwekDetail: HospitalDetailContent = {
   capacityIntro:
     "A referral hospital with comprehensive facilities. In a recent six-month period, the hospital treated more than 35,000 outpatients and performed approximately 2,000 surgeries.",
   bigNumbers: [
-    { label: "Beds", value: "361" },
-    { label: "Operating rooms · with recovery", value: "6" },
-    { label: "Outpatients · 6 months", value: "35k+" },
+    { label: "Beds", value: 361 },
+    { label: "Operating rooms · with recovery", value: 6 },
+    {
+      label: "Outpatients · 6 months",
+      value: 35000,
+      formatKind: "k",
+      suffix: "+",
+    },
   ],
   capacityInfo: [
     { key: "Imaging", value: "64-slice Siemens CT scanner, X-ray, ultrasound" },
