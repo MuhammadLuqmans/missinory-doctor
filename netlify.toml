@@ -1,0 +1,18 @@
+# Netlify config for the missionary-doctors Next.js app.
+# This file lives inside the app folder so it picks up automatically
+# when Netlify's "Base directory" points at `missionary-doctors`.
+
+[build]
+  command   = "npm run build"
+  publish   = ".next"
+
+[build.environment]
+  # Pin Node to a version that's stable for Next.js 14.
+  NODE_VERSION = "20"
+  # Avoid Netlify hijacking the SWC binary on Linux runners.
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Official Next.js runtime — required for App Router, dynamic routes,
+# server components, image optimization, and ISR/SSR.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
