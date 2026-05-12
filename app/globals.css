@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink antialiased;
+    font-family: var(--font-geist), system-ui, sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    text-rendering: optimizeLegibility;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font: inherit;
+    cursor: pointer;
+    border: 0;
+    background: none;
+    color: inherit;
+  }
+
+  input,
+  select {
+    font: inherit;
+    color: inherit;
+    outline: none;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-container;
+    padding-left: clamp(24px, 5vw, 80px);
+    padding-right: clamp(24px, 5vw, 80px);
+  }
+
+  .mono-label {
+    @apply font-mono uppercase text-mute;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+  }
+
+  .display {
+    @apply font-serif font-light tracking-tight;
+  }
+
+  /* Focus ring for accessibility */
+  :focus-visible {
+    outline: 2px solid theme("colors.terra");
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  .progress-fill {
+    transform: scaleX(var(--progress));
+    transform-origin: left;
+  }
+}
