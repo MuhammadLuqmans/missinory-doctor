@@ -11,8 +11,10 @@ const config: Config = {
         paper: "#F4EFE6",
         bone: "#FBF8F2",
         ink: "#1F1B14",
-        "ink-2": "#43392E",
-        mute: "#7A7468",
+        "ink-2": "#3A3329",
+        /** Long labels & captions — bumped contrast vs paper/bone for small caps & captions. */
+        read: "#443C33",
+        mute: "#5C554A",
         hair: "#D8CFBE",
         "hair-soft": "#E5DDCC",
         terra: "#B14A2C",
@@ -22,10 +24,20 @@ const config: Config = {
       fontFamily: {
         serif: ["var(--font-fraunces)", "Georgia", "serif"],
         sans: ["var(--font-geist)", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+        /** Reserved for `<code>` / data; UI labels use `sans` (Inter) */
+        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
       maxWidth: {
         container: "1240px",
+        /** Comfortable measure for paragraphs (~68 characters). */
+        measure: "42rem",
+      },
+      boxShadow: {
+        /** Soft lift for photography & cards — reads like a printed plate. */
+        story:
+          "0 28px 56px -28px rgba(31, 27, 20, 0.14), 0 0 0 1px rgba(31, 27, 20, 0.05)",
+        "story-sm":
+          "0 16px 36px -20px rgba(31, 27, 20, 0.12), 0 0 0 1px rgba(31, 27, 20, 0.04)",
       },
       keyframes: {
         "fade-up": {

@@ -7,7 +7,7 @@ export default function NotFound() {
     <>
       <Header />
       <section className="container-page py-32 text-center">
-        <div className="font-mono text-[13px] uppercase tracking-[0.16em] text-mute">
+        <div className="font-sans text-[13px] uppercase tracking-[0.16em] text-mute">
           404
         </div>
         <h1 className="mx-auto mt-6 max-w-[18ch] font-serif text-[clamp(48px,7vw,96px)] font-light leading-none tracking-[-0.03em]">
@@ -26,7 +26,7 @@ export default function NotFound() {
           </Link>
           <Link
             href="/needs"
-            className="rounded-full border border-ink px-7 py-[15px] text-[15.5px] font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
+            className="rounded-full border border-ink px-7 py-[15px] text-[15.5px] font-bold text-ink transition-colors hover:bg-ink hover:text-paper"
           >
             See missionary needs
           </Link>

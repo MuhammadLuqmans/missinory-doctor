@@ -21,24 +21,42 @@ export const metadata = {
 export default function HospitalsPage() {
   return (
     <>
-      <section className="relative overflow-hidden ">
+      <section className="relative overflow-hidden border-b border-hair">
       <Header current="hospitals" />
+      <div
+  aria-hidden
+  className="pointer-events-none absolute -left-40 bottom-0 h-[520px] w-[520px] rounded-full bg-terra/20 blur-3xl"
+/>
 
+<div
+  aria-hidden
+  className="pointer-events-none absolute -right-32 top-0 h-[420px] w-[420px] rounded-full bg-moss/15 blur-3xl"
+/>
+
+<div
+  aria-hidden
+  className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-soft-light"
+  style={{
+    backgroundImage:
+      "radial-gradient(#F5E6D3 1px, transparent 1px)",
+    backgroundSize: "24px 24px",
+  }}
+/>
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-terra/[0.10] via-bone/70 to-paper"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-terra/[0.10] via-bone/75 to-paper"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-40 -top-40 h-[560px] w-[560px] rounded-full bg-terra/20 blur-3xl"
+          className="pointer-events-none absolute -right-40 -top-40 h-[560px] w-[560px] rounded-full bg-terra/18 blur-3xl"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-48 -left-40 h-[480px] w-[480px] rounded-full bg-moss/15 blur-3xl"
+          className="pointer-events-none absolute -bottom-48 -left-40 h-[480px] w-[480px] rounded-full bg-moss/14 blur-3xl"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"
+          className="pointer-events-none absolute inset-0 opacity-[0.04] mix-blend-multiply"
           style={{
             backgroundImage:
               "radial-gradient(#1F1B14 1px, transparent 1px)",
@@ -49,7 +67,7 @@ export default function HospitalsPage() {
         <div className="container-page relative py-20 md:py-[88px]">
           <Reveal>
             <div className="mb-6 flex items-center gap-3">
-              {/* <span aria-hidden className="h-px w-10 bg-terra/70" /> */}
+              <span aria-hidden className="h-px w-10 bg-terra/60" />
               <Eyebrow className="m-0">Hospital Tours</Eyebrow>
             </div>
           </Reveal>
@@ -61,14 +79,14 @@ export default function HospitalsPage() {
             </h1>
           </Reveal>
           <Reveal delay={160}>
-            <p className="mt-7 max-w-[54ch] text-[20px] leading-[1.55] text-ink-2">
+            <p className="prose-measure mt-8 text-[clamp(1.05rem,2vw,1.2rem)] leading-relaxed text-ink-2">
               From 800-bed teaching hospitals to single-physician rural clinics
               — every one a Christian mission, every one open to volunteer
               physicians.
             </p>
           </Reveal>
 
-          <div className="mt-11 grid grid-cols-1 gap-5 border-t border-hair/70 pt-7 sm:grid-cols-3 sm:gap-0">
+          <div className="mt-12 grid grid-cols-1 gap-8 border-t border-hair/80 pt-8 sm:mt-14 sm:grid-cols-3 sm:gap-0 sm:pt-10">
             {heroMeta.map((stat, i) => (
               <Reveal
                 key={stat.label}
@@ -76,24 +94,24 @@ export default function HospitalsPage() {
                 className={[
                   "pb-0 sm:px-8",
                   i < heroMeta.length - 1
-                    ? "sm:border-r sm:border-hair/70"
+                    ? "sm:border-r sm:border-hair/80"
                     : "",
                   i === 0 ? "sm:pl-0" : "",
                   i === heroMeta.length - 1 ? "sm:pr-0" : "",
                 ].join(" ")}
               >
-                <strong className="mb-2 block font-serif text-[38px] font-normal italic leading-none tracking-tight text-ink">
+                <strong className="mb-2 block font-serif text-[clamp(2rem,5vw,2.5rem)] font-normal italic leading-none tracking-tight text-ink">
                   <CountUp value={stat.value} />
                 </strong>
-                <span className="font-mono text-[13px] uppercase tracking-[0.1em] text-mute">
+                <span className="font-medium uppercase tracking-[0.1em] !text-[16px] text-read">
                   {stat.label}
                 </span>
               </Reveal>
             ))}
           </div>
         </div>
-
       </section>
+
       <HospitalsClient hospitals={hospitals} />
       <Footer />
     </>

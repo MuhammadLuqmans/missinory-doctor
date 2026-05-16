@@ -21,7 +21,7 @@ interface NativeButtonProps
 }
 
 const baseStyles =
-  "inline-flex items-center gap-2 rounded-full px-7 py-[15px] text-[15.5px] font-medium transition-colors";
+  "inline-flex items-center gap-2 rounded-full px-7 py-4 text-[16px] font-medium transition-colors md:px-8 md:py-[15px]";
 
 const variantStyles: Record<Variant, string> = {
   primary: "bg-ink text-paper hover:bg-terra",

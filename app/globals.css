@@ -5,13 +5,16 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Anchors land below sticky headers if introduced later */
+    scroll-padding-top: 5rem;
   }
 
   body {
     @apply bg-paper text-ink antialiased;
     font-family: var(--font-geist), system-ui, sans-serif;
-    font-size: 18px;
-    line-height: 1.7;
+    font-size: clamp(17px, 1.05rem + 0.2vw, 19px);
+    line-height: 1.72;
+    letter-spacing: 0.01em;
     text-rendering: optimizeLegibility;
   }
 
@@ -54,10 +57,21 @@
     padding-right: clamp(24px, 5vw, 80px);
   }
 
-  .mono-label {
-    @apply font-mono uppercase text-mute;
-    font-size: 13px;
-    letter-spacing: 0.16em;
+  /** Small caps navigation / metadata — sans reads faster than monospace at 12–14px */
+  .label-caps {
+    @apply font-sans uppercase text-read;
+    font-size: 13.5px;
+    letter-spacing: 0.11em;
+  }
+
+  /** Comfortable reading width for story-style paragraphs. */
+  .prose-measure {
+    @apply max-w-measure;
+  }
+
+  /** Chapter-style navigation links (terra, readable tracking). */
+  .link-chapter {
+    @apply font-sans text-sm font-normal uppercase tracking-[0.11em] text-terra transition-colors hover:text-terra-deep;
   }
 
   .display {

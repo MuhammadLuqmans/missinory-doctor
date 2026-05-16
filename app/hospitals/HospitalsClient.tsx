@@ -27,15 +27,15 @@ const regionQuotes: Record<
 > = {
   Africa: {
     quote: "“God, send me anywhere, only go with me.”",
-    cite: "— David Livingstone",
+    cite: "David Livingstone",
   },
   "Asia & ME": {
     quote: "“Every additional trial was ordered by infinite love and mercy.”",
-    cite: "— Adoniram Judson",
+    cite: "Adoniram Judson",
   },
   Americas: {
     quote: "“He is the Saviour for the young and the old. Lord, here I am.”",
-    cite: "— Eric Liddell",
+    cite: "Eric Liddell",
   },
 };
 
@@ -180,10 +180,10 @@ export default function HospitalsClient({ hospitals }: Props) {
                 <p className="max-w-[36ch] font-serif text-[17px] font-light italic leading-[1.4] text-ink-2 md:text-right">
                   {quote.quote}
                 </p>
-                <div className="font-mono text-[13px] uppercase tracking-[0.12em] text-mute">
+                <div className="font-sans text-[13px] font-bold uppercase tracking-[0.12em] text-mute">
                   {quote.cite}
                 </div>
-                <div className="mt-1.5 flex flex-wrap gap-[22px] font-mono text-[13px] uppercase tracking-[0.1em] text-mute">
+                <div className="mt-1.5 flex flex-wrap gap-[22px] font-sans text-[13px] uppercase tracking-[0.1em] text-mute">
                   <div>
                     <strong className="font-medium text-ink">
                       {totals.hospitals}
@@ -218,15 +218,17 @@ export default function HospitalsClient({ hospitals }: Props) {
               ))}
             </div>
 
-            <div className="pb-2 text-center font-mono text-[13px] uppercase tracking-[0.12em] text-mute">
+            <div className="pb-2 text-center font-sans text-[13px] uppercase tracking-[0.12em] text-mute">
               <a
                 href="#"
-                className="text-terra transition-colors hover:text-terra-deep"
+                className="text-terra font-bold transition-colors hover:text-terra-deep"
               >
                 Show all {totals.hospitals} hospitals in{" "}
                 {r === "Asia & ME" ? "Asia & the Middle East" : r} →
               </a>
             </div>
+            <div className="border-hair my-40" />
+            
           </section>
         );
       })}

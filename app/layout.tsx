@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, JetBrains_Mono, Inter } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -7,13 +7,6 @@ const fraunces = Fraunces({
   weight: ["300", "400", "500"],
   style: ["normal", "italic"],
   variable: "--font-fraunces",
-  display: "swap",
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-mono",
   display: "swap",
 });
 
@@ -41,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${jetbrains.variable} ${inter.variable}`}
+      className={`${fraunces.variable} ${inter.variable}`}
     >
       <body>{children}</body>
     </html>

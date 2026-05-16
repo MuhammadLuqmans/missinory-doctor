@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PhotoFrame from "./PhotoFrame";
 import type { HospitalSummary } from "@/lib/types";
 
 interface HospitalCardProps {
@@ -9,45 +10,42 @@ export default function HospitalCard({ hospital }: HospitalCardProps) {
   return (
     <Link
       href={`/hospitals/${hospital.slug}`}
-      className="group flex h-full flex-col transition-transform duration-200 hover:-translate-y-1"
+      className="group flex h-full flex-col transition-transform duration-200 hover:-translate-y-0.5"
     >
-      <div
-        className="relative mb-[18px] aspect-[4/3] overflow-hidden rounded-[14px] bg-hair bg-cover bg-center transition-[filter] duration-300 group-hover:brightness-[0.97]"
-        style={{ backgroundImage: `url(${hospital.imageUrl})` }}
-      >
+      <PhotoFrame imageUrl={hospital.imageUrl}>
         {hospital.urgentNeeds ? (
-          <span className="absolute left-[14px] top-[14px] rounded-full bg-paper px-3 py-1.5 font-mono text-[13px] uppercase tracking-[0.12em] text-terra">
+          <span className="absolute left-4 top-4 z-10 rounded-full bg-paper/95 px-3.5 py-2 font-sans text-[12.5px] font-medium uppercase tracking-[0.1em] text-terra shadow-story-sm backdrop-blur-[2px]">
             {hospital.urgentNeeds} urgent need
             {hospital.urgentNeeds > 1 ? "s" : ""}
           </span>
         ) : null}
-      </div>
+      </PhotoFrame>
 
-      <div className="mb-[10px] font-mono text-[13px] uppercase tracking-[0.1em] text-mute">
+      <div className="mb-2 font-sans text-[12.5px] font-medium uppercase tracking-[0.1em] text-ink-2 md:text-[13px]">
         {hospital.location} · {hospital.country}
       </div>
-      <h3 className="mb-[10px] font-serif text-[25px] font-normal leading-[1.18] tracking-tight text-ink">
+      <h3 className="mb-2.5 font-serif text-[clamp(1.35rem,2.2vw,1.6rem)] font-normal leading-snug tracking-tight text-ink">
         {hospital.name}
       </h3>
-      <p className="mb-[18px] flex-grow text-[16.5px] leading-[1.55] text-ink-2">
+      <p className="mb-5 flex-grow text-[17px] leading-[1.72] tracking-[0.01em] text-ink-2 md:text-[1.0625rem] md:leading-[1.75]">
         {hospital.blurb}
       </p>
 
-      <div className="mt-auto flex gap-6 border-t border-hair-soft pt-[14px] text-[15px] text-ink-2">
+      <div className="mt-auto flex gap-6 border-t border-hair pt-4 text-[15px] leading-snug text-ink-2">
         <div>
-          <strong className="mb-[2px] block text-[16px] font-medium text-ink">
+          <strong className="mb-0.5 block text-[17px] font-semibold text-ink">
             {hospital.beds.toLocaleString()}
           </strong>
           Beds
         </div>
         <div>
-          <strong className="mb-[2px] block text-[16px] font-medium text-ink">
+          <strong className="mb-0.5 block text-[17px] font-semibold text-ink">
             {hospital.founded}
           </strong>
           Founded
         </div>
         <div>
-          <strong className="mb-[2px] block text-[16px] font-medium text-terra">
+          <strong className="mb-0.5 block text-[17px] font-semibold text-terra">
             {hospital.metricValue}
           </strong>
           {hospital.metricLabel}
