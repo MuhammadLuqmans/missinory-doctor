@@ -227,7 +227,7 @@ export default function HospitalsClient({ hospitals }: Props) {
                 {r === "Asia & ME" ? "Asia & the Middle East" : r} →
               </a>
             </div>
-            <div className="border-hair my-40" />
+            <div className="border-hair my-20" />
             
           </section>
         );

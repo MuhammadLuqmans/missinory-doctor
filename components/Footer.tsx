@@ -37,7 +37,7 @@ const columns: FooterColumn[] = [
 
 export default function Footer() {
   return (
-    <footer className="border  border-hair   max-w-[100vw] overflow-hidden">
+    <footer className="border-t  border-hair   max-w-[100vw] overflow-hidden">
       
       <div className="container-page relative pb-10 pt-[72px]">
         <div className="grid grid-cols-1 gap-12 pb-14 sm:grid-cols-2 md:grid-cols-[2fr_1fr_1fr_1fr]">
