@@ -37,9 +37,9 @@ const columns: FooterColumn[] = [
 
 export default function Footer() {
   return (
-    <footer className="border-t relative border-hair pb-10 pt-[72px]">
+    <footer className="border  border-hair   max-w-[100vw] overflow-hidden">
       
-      <div className="container-page">
+      <div className="container-page relative pb-10 pt-[72px]">
         <div className="grid grid-cols-1 gap-12 pb-14 sm:grid-cols-2 md:grid-cols-[2fr_1fr_1fr_1fr]">
           <div>
             <div className="mb-4 font-serif text-2xl tracking-tight">
@@ -70,11 +70,10 @@ export default function Footer() {
           <div>© 2026 Giving Tree Projects · Shreveport, Louisiana</div>
           <div>Powered by Giving Tree Projects</div>
         </div>
-      </div>
       {/* <div
   aria-hidden
   className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1A1612] via-[#2A241E]/95 to-[#3B332B]/80"
-/> */}
+  /> */}
 
 <div
   aria-hidden
@@ -91,10 +90,11 @@ export default function Footer() {
   className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-soft-light"
   style={{
     backgroundImage:
-      "radial-gradient(#F5E6D3 1px, transparent 1px)",
+    "radial-gradient(#F5E6D3 1px, transparent 1px)",
     backgroundSize: "24px 24px",
   }}
 />
+  </div>
     </footer>
   );
 }
