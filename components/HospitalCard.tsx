@@ -21,7 +21,7 @@ export default function HospitalCard({ hospital }: HospitalCardProps) {
         ) : null}
       </PhotoFrame>
 
-      <div className="mb-2 font-sans text-[12.5px] font-medium uppercase tracking-[0.1em] text-ink-2 md:text-[13px]">
+      <div className="mb-2 font-sans text-[12.5px] font-medium uppercase tracking-[0.1em] text-ink-2 md:text-sm">
         {hospital.location} · {hospital.country}
       </div>
       <h3 className="mb-2.5 font-serif text-[clamp(1.35rem,2.2vw,1.6rem)] font-normal leading-snug tracking-tight text-ink">

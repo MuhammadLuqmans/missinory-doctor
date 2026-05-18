@@ -198,7 +198,7 @@ export default function DonationAside({
             onChange={(e) => handleCustomChange(e.target.value)}
             placeholder="Other amount"
             aria-label="Custom donation amount in US dollars"
-            className="flex-1 bg-transparent py-[13px] font-serif text-[19px] text-ink placeholder:text-mute"
+            className="flex-1 bg-transparent py-sm font-serif text-[19px] text-ink placeholder:text-mute"
           />
         </label>
 

@@ -180,24 +180,24 @@ export default function HospitalsClient({ hospitals }: Props) {
                 <p className="max-w-[36ch] font-serif text-[17px] font-light italic leading-[1.4] text-ink-2 md:text-right">
                   {quote.quote}
                 </p>
-                <div className="font-sans text-[13px] font-bold uppercase tracking-[0.12em] text-mute">
+                <div className="font-sans text-sm font-bold uppercase tracking-[0.12em] text-mute">
                   {quote.cite}
                 </div>
-                <div className="mt-1.5 flex flex-wrap gap-[22px] font-sans text-[13px] uppercase tracking-[0.1em] text-mute">
+                <div className="mt-1.5 flex flex-wrap gap-[22px] font-sans text-sm font-bold  uppercase tracking-[0.1em] text-mute">
                   <div>
-                    <strong className="font-medium text-ink">
+                    <strong className="text-terra">
                       {totals.hospitals}
                     </strong>{" "}
                     hospitals
                   </div>
                   <div>
-                    <strong className="font-medium text-ink">
+                    <strong className=" text-terra">
                       {totals.countries}
                     </strong>{" "}
                     countries
                   </div>
                   <div>
-                    <strong className="font-medium text-ink">
+                    <strong className=" text-terra">
                       {totals.openRoles}
                     </strong>{" "}
                     open roles
@@ -218,7 +218,7 @@ export default function HospitalsClient({ hospitals }: Props) {
               ))}
             </div>
 
-            <div className="pb-2 text-center font-sans text-[13px] uppercase tracking-[0.12em] text-mute">
+            <div className="pb-2 text-center font-sans text-sm uppercase tracking-[0.12em] text-mute">
               <a
                 href="#"
                 className="text-terra font-bold transition-colors hover:text-terra-deep"

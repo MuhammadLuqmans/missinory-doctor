@@ -47,7 +47,7 @@ export default function HospitalDetailPage({ params }: PageProps) {
       <div className="mx-auto max-w-container px-[clamp(24px,5vw,80px)] pt-6">
         <Link
           href="/hospitals"
-          className="inline-flex items-center gap-2 font-sans text-[13px] uppercase tracking-[0.15em] text-mute transition-colors hover:text-ink"
+          className="inline-flex items-center gap-2 font-sans text-sm uppercase tracking-[0.15em] text-mute transition-colors hover:text-ink"
         >
           <span aria-hidden>←</span> All hospital tours
         </Link>
@@ -104,7 +104,7 @@ export default function HospitalDetailPage({ params }: PageProps) {
 
           <aside className="flex flex-col gap-4 lg:sticky lg:top-6 lg:self-start">
             <div className="rounded-[18px] border border-hair bg-bone p-[30px]">
-              <h4 className="mb-5 font-sans text-[13px] font-normal uppercase tracking-[0.14em] text-mute">
+              <h4 className="mb-5 font-sans text-sm font-normal uppercase tracking-[0.14em] text-mute">
                 At a glance
               </h4>
               <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-3.5 text-[16px]">
@@ -116,7 +116,7 @@ export default function HospitalDetailPage({ params }: PageProps) {
                   { key: "Region", value: hospital.region },
                 ]).map((g) => (
                   <div key={g.key} className="contents">
-                    <dt className="pt-1 font-sans text-[13px] uppercase tracking-[0.1em] text-mute">
+                    <dt className="pt-1 font-sans text-sm uppercase tracking-[0.1em] text-mute">
                       {g.key}
                     </dt>
                     <dd className="leading-[1.5] text-ink">{g.value}</dd>
@@ -126,12 +126,12 @@ export default function HospitalDetailPage({ params }: PageProps) {
             </div>
 
             <div className="rounded-[18px] bg-ink p-[30px] text-paper">
-              <h4 className="mb-[18px] font-sans text-[13px] font-normal uppercase tracking-[0.14em] text-terra">
+              <h4 className="mb-[18px] font-sans text-sm uppercase tracking-[0.14em] font-bold text-gray-300">
                 Get involved
               </h4>
               <div className="mb-[26px] font-serif text-[26px] font-light italic leading-[1.2] tracking-tight">
                 For those{" "}
-                <em className="not-italic text-terra">called to serve</em>.
+                <em className="not-italic font-bold text-gray-300">called to serve</em>.
               </div>
               <Link
                 href="/apply"
@@ -231,7 +231,7 @@ function DetailedHospital({
                   suffix={n.suffix}
                 />
               </strong>
-              <span className="font-sans text-[13px] uppercase tracking-[0.12em] text-mute">
+              <span className="font-sans text-sm uppercase tracking-[0.12em] text-mute">
                 {n.label}
               </span>
             </Reveal>
@@ -264,7 +264,7 @@ function DetailedHospital({
           ))}
         </div>
 
-        <div className="mt-8 font-sans text-[13px] uppercase tracking-[0.14em] text-mute">
+        <div className="mt-8 font-sans text-sm uppercase tracking-[0.14em] text-mute">
           Outpatient clinics
         </div>
         <div className="mt-3.5 flex flex-wrap gap-2">
@@ -360,7 +360,7 @@ function DetailedHospital({
                 <h4 className="mb-1.5 font-serif text-[20px] font-normal leading-[1.25] tracking-tight">
                   {n.title}
                 </h4>
-                <span className="font-sans text-[13px] uppercase tracking-[0.1em] text-mute">
+                <span className="font-sans text-sm uppercase tracking-[0.1em] text-mute">
                   {n.category}
                 </span>
               </div>
@@ -378,7 +378,7 @@ function DetailedHospital({
               </div>
               <div className="col-span-2 text-right font-serif text-[20px] italic text-ink sm:col-span-1">
                 {formatMoney(n.goal)}
-                <small className="mt-0.5 block font-sans text-[13px] not-italic tracking-wider text-mute">
+                <small className="mt-0.5 block font-sans text-sm not-italic tracking-wider text-mute">
                   total goal
                 </small>
               </div>
@@ -405,7 +405,7 @@ function DetailedHospital({
                 i < detail.logistics.length - 2 ? "border-b border-hair" : "",
               ].join(" ")}
             >
-              <h5 className="mb-3.5 font-sans text-[13px] font-normal uppercase tracking-[0.14em] text-terra">
+              <h5 className="mb-3.5 font-sans text-sm font-normal uppercase tracking-[0.14em] text-terra">
                 {cell.title}
               </h5>
               <RichText
@@ -445,7 +445,7 @@ function DetailedHospital({
               <div className="mb-2 font-serif text-[26px] font-light italic tracking-tight text-ink">
                 {a.name}
               </div>
-              <div className="font-sans text-[13px] uppercase tracking-[0.1em] text-mute">
+              <div className="font-sans text-sm uppercase tracking-[0.1em] text-mute">
                 {a.desc}
               </div>
             </div>
@@ -532,7 +532,7 @@ function InfoList({
           key={it.key}
           className="grid items-baseline gap-1.5 border-b border-hair-soft py-[18px] last:border-b-0 sm:grid-cols-[200px_1fr] sm:gap-6"
         >
-          <div className="pt-0.5 font-sans text-[13px] uppercase tracking-[0.12em] text-mute">
+          <div className="pt-0.5 font-sans text-sm uppercase tracking-[0.12em] text-mute">
             {it.key}
           </div>
           <div className="text-[17px] leading-[1.6] text-ink">{it.value}</div>

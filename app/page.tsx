@@ -4,6 +4,7 @@ import CountUp from "@/components/CountUp";
 import Eyebrow from "@/components/Eyebrow";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import HeroBackgroundSlider from "@/components/HeroBackgroundSlider";
 import HospitalCard from "@/components/HospitalCard";
 import NeedCard from "@/components/NeedCard";
 import PhotoFrame from "@/components/PhotoFrame";
@@ -62,27 +63,31 @@ export default function HomePage() {
   return (
     <>
       <section className="relative overflow-hidden border-b border-hair">
-      <Header />
+        {/* <HeroBackgroundSlider /> */}
 
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-terra/[0.11] via-bone/80 to-paper"
+          className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-paper/90 via-bone/82 to-paper/94"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-48 -top-48 h-[640px] w-[640px] rounded-full bg-terra/18 blur-3xl"
+          className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-terra/[0.08] via-transparent to-paper/60"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -left-48 top-1/3 h-[520px] w-[520px] rounded-full bg-moss/14 blur-3xl"
+          className="pointer-events-none absolute -right-48 -top-48 z-[1] h-[640px] w-[640px] rounded-full bg-terra/14 blur-3xl"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-40 left-1/3 h-[420px] w-[420px] rounded-full bg-terra/10 blur-3xl"
+          className="pointer-events-none absolute -left-48 top-1/3 z-[1] h-[520px] w-[520px] rounded-full bg-moss/10 blur-3xl"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.027] mix-blend-multiply"
+          className="pointer-events-none absolute -bottom-40 left-1/3 z-[1] h-[420px] w-[420px] rounded-full bg-terra/8 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-[1] opacity-[0.027] mix-blend-multiply"
           style={{
             backgroundImage:
               "radial-gradient(#1F1B14 1px, transparent 1px)",
@@ -90,69 +95,77 @@ export default function HomePage() {
           }}
         />
 
-        <div className="container-page relative py-20 text-center md:py-[104px]">
-          <Reveal>
-            <div className="mb-8 flex items-center justify-center gap-3">
-              {/* <span aria-hidden className="h-px w-12 bg-terra/60" /> */}
-              <Eyebrow className="m-0 max-w-measure mx-auto normal-case tracking-[0.12em]">
-                Powered by Giving Tree Projects · 501(c)(3)
-              </Eyebrow>
-              {/* <span aria-hidden className="h-px w-12 bg-terra/60" /> */}
-            </div>
-          </Reveal>
-          <Reveal delay={80}>
-            <h1 className="mx-auto max-w-[14ch] text-balance font-serif text-[clamp(2.75rem,7.5vw,6.75rem)] font-light leading-[1.03] tracking-[-0.035em] text-ink md:leading-[1.02]">
-              Discover your calling.
-              <br />
-              <em className="italic text-terra">Fund a need.</em>
-              <br />
-              Go serve.
-            </h1>
-          </Reveal>
-          <Reveal delay={160}>
-            <p className="prose-measure mx-auto mt-8 text-[clamp(1.0625rem,2.2vw,1.28rem)] font-normal leading-[1.7] tracking-[0.01em] text-ink-2 md:mt-10 md:leading-[1.72]">
-              A catalog of Christian medical mission hospitals worldwide. For
-              those called to serve, those moved to give.
-            </p>
-          </Reveal>
-          <Reveal delay={240}>
-            <div className="mt-11 flex flex-wrap justify-center gap-3">
-              <Button href="/hospitals" variant="primary">
-                Tour the hospitals
-              </Button>
-              <Button href="/needs" variant="ghost">
-                See missionary needs
-              </Button>
-            </div>
-          </Reveal>
+        <div className="relative z-10 pb-10">
+          <Header />
 
-          <div className="mt-16 border-t border-hair pt-11 sm:mt-20 sm:pt-[3.25rem]">
-            <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-0">
-              {heroStats.map((stat, i) => (
-                <Reveal
-                  key={stat.label}
-                  delay={i * 100}
-                  className={[
-                    "px-0 text-center sm:px-6 md:px-8",
-                    i < heroStats.length - 1
-                      ? "sm:border-r sm:border-hair"
-                      : "",
-                    i === 0 ? "sm:pl-0" : "",
-                    i === heroStats.length - 1 ? "sm:pr-0" : "",
-                  ].join(" ")}
-                >
-                  <strong className="mb-3 block font-serif text-[clamp(2.5rem,6vw,3.25rem)] font-light italic leading-none tracking-tight text-ink md:mb-3.5">
-                    <CountUp value={stat.value} />
-                  </strong>
-                  <span className="mx-auto block max-w-[26ch] font-sans text-[15px] font-medium uppercase leading-[1.45] tracking-[0.06em] text-ink-2 md:text-[16px] md:leading-relaxed md:tracking-[0.055em]">
-                    {stat.label}
-                  </span>
-                </Reveal>
-              ))}
+          <div className="container-page py-20 text-center md:py-[104px] ">
+            {/* <div className="glass-effect">   */}
+            <Reveal>
+              <div className="mb-8 flex items-center justify-center gap-3">
+                {/* <span aria-hidden className="h-px w-12 bg-terra/60" /> */}
+                <Eyebrow className="m-0 max-w-measure mx-auto normal-case tracking-[0.12em]">
+                  Powered by Giving Tree Projects · 501(c)(3)
+                </Eyebrow>
+                {/* <span aria-hidden className="h-px w-12 bg-terra/60" /> */}
+              </div>
+            </Reveal>
+            <Reveal delay={80}>
+              <h1 className="mx-auto max-w-[14ch] text-balance font-serif text-[clamp(2.75rem,7.5vw,6.75rem)] font-light leading-[1.03] tracking-[-0.035em] text-ink md:leading-[1.02]">
+                Discover your calling.
+                <br />
+                <em className="italic text-terra">Fund a need.</em>
+                <br />
+                Go serve.
+              </h1>
+            </Reveal>
+            <Reveal delay={160}>
+              <p className="prose-measure mx-auto mt-8 text-[clamp(1.0625rem,2.2vw,1.28rem)] font-normal leading-[1.7] tracking-[0.01em] text-ink-2 md:mt-10 md:leading-[1.72]">
+                A catalog of Christian medical mission hospitals worldwide. For
+                those called to serve, those moved to give.
+              </p>
+            </Reveal>
+            <Reveal delay={240}>
+              <div className="mt-11 flex flex-wrap justify-center gap-3">
+                <Button href="/hospitals" variant="primary">
+                  Tour the hospitals
+                </Button>
+                <Button href="/needs" variant="ghost">
+                  See missionary needs
+                  </Button>
+                </div>
+              </Reveal>
             </div>
-          </div>
+        {/* </div> */}
+
+        <div className="mt-16 border-t border-hair pt-11 sm:mt-20 sm:pt-[3.25rem]">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-0">
+          {heroStats.map((stat, i) => (
+            <Reveal
+              key={stat.label}
+              delay={i * 100}
+              className={[
+                "px-0 text-center sm:px-6 md:px-8",
+                i < heroStats.length - 1
+                  ? "sm:border-r sm:border-hair"
+                  : "",
+                i === 0 ? "sm:pl-0" : "",
+                i === heroStats.length - 1 ? "sm:pr-0" : "",
+              ].join(" ")}
+            >
+              <strong className="mb-3 block font-serif text-[clamp(2.5rem,6vw,3.25rem)] font-light italic leading-none tracking-tight text-ink md:mb-3.5">
+                <CountUp value={stat.value} />
+              </strong>
+              <span className="mx-auto block font-sans text-[15px] font-medium uppercase leading-[1.45] tracking-[0.06em] text-ink-2 md:text-[16px] md:leading-relaxed md:tracking-[0.055em]">
+                {stat.label}
+              </span>
+            </Reveal>
+          ))}
         </div>
+      </div>
+      </div>
+
       </section>
+      
 
       <section
         id="hospitals"
@@ -191,7 +204,7 @@ export default function HomePage() {
       <section className="border-y border-hair bg-bone/40 py-20 md:py-24">
         <div className="container-page">
           <Reveal>
-            <p className="mb-3 font-sans font-extrabold text-[12.5px] uppercase tracking-[0.1em] text-ink-2 md:text-[13px]">
+            <p className="mb-3 font-sans font-extrabold text-[12.5px] uppercase tracking-[0.1em] text-ink-2 md:text-sm">
               Three ways to take part
             </p>
             <h2 className="max-w-[22ch] text-balance font-serif text-[clamp(1.85rem,3.5vw,2.6rem)] font-light leading-[1.15] tracking-tight text-ink md:leading-tight">
@@ -204,7 +217,7 @@ export default function HomePage() {
               <Reveal key={p.num} delay={idx * 110} className="h-full">
                 <article className="flex h-full min-h-[320px] flex-col rounded-2xl bg-paper p-6 shadow-story-sm transition-shadow duration-300 hover:shadow-story md:p-7 lg:min-h-[340px]">
                   <div className="flex items-center gap-3">
-                    <p className="font-sans text-[12.5px] font-extrabold uppercase tracking-[0.09em] text-ink-2 md:text-[13px]">
+                    <p className="font-sans text-[12.5px] font-extrabold uppercase tracking-[0.09em] text-ink-2 md:text-sm">
                       {p.num}
                     </p>
                   </div>
@@ -244,7 +257,7 @@ export default function HomePage() {
         <div className="container-page">
           <div className="flex flex-wrap items-end justify-between gap-8 border-b border-hair/80 pb-10">
             <Reveal>
-              <p className="mb-3 font-sans font-extrabold text-[12.5px] uppercase tracking-[0.1em] text-ink-2 md:text-[13px]">
+              <p className="mb-3 font-sans font-extrabold text-[12.5px] uppercase tracking-[0.1em] text-ink-2 md:text-sm">
                 Chapter 2
               </p>
               <h2 className="max-w-[17ch] text-balance font-serif text-[clamp(2rem,4.8vw,3.75rem)] font-light leading-[1.08] tracking-tight text-ink md:leading-[1.05]">
@@ -291,7 +304,7 @@ export default function HomePage() {
                 patients who would have died on the way to Nairobi are alive in
                 our follow-up clinic. &rdquo;
               </blockquote>
-              <cite className="mt-9 block font-sans text-[12.5px] font-semibold uppercase leading-relaxed tracking-[0.09em] text-ink not-italic md:text-[13px]">
+              <cite className="mt-9 block font-sans text-[12.5px] font-semibold uppercase leading-relaxed tracking-[0.09em] text-ink not-italic md:text-sm">
                 <strong className="font-semibold text-ink">
                   Dr. James Otieno
                 </strong>
@@ -316,7 +329,7 @@ export default function HomePage() {
       <section className="border-t border-hair bg-paper py-20 text-center md:py-28">
         <div className="container-page">
           <Reveal>
-            <h2 className="mx-auto max-w-[14ch] text-balance font-serif text-[clamp(2.25rem,5.5vw,4.5rem)] font-light leading-[1.07] tracking-tight text-ink md:leading-[1.06]">
+            <h2 className="mx-auto  text-balance font-serif text-[clamp(2.25rem,5.5vw,4.5rem)] font-light leading-[1.07] tracking-tight text-ink md:leading-[1.06]">
               Discover your calling.
               <br />
               <em className="italic text-terra">Fund a need.</em>
@@ -325,10 +338,10 @@ export default function HomePage() {
             </h2>
           </Reveal>
           <Reveal delay={140}>
-            <p className="prose-measure mx-auto mt-8 text-[1.065rem] font-normal leading-[1.72] tracking-[0.01em] text-ink-2 md:mt-9 md:text-[1.085rem]">
+            {/* <p className=" mx-auto mt-8 text-md font-normal leading-[1.72] tracking-[0.01em] text-ink-2 md:mt-9 md:text-xl">
               Browse the network, support a documented need, or take your
               skills to the field.
-            </p>
+            </p> */}
             <div className="mt-10 flex flex-wrap justify-center gap-3 md:mt-11">
               <Button href="/hospitals" variant="primary">
                 Tour the hospitals

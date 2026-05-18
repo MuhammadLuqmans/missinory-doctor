@@ -25,7 +25,7 @@ export default function NeedCard({ need }: NeedCardProps) {
         ) : null}
       </PhotoFrame>
 
-      <div className="mb-2 font-sans text-[12.5px] font-medium uppercase tracking-[0.1em] text-ink-2 md:text-[13px]">
+      <div className="mb-2 font-sans text-[12.5px] font-medium uppercase tracking-[0.1em] text-ink-2 md:text-sm">
         {need.location}
       </div>
       <h3 className="mb-2.5 font-serif text-[clamp(1.35rem,2.2vw,1.6rem)] font-normal leading-snug tracking-tight text-ink">
@@ -44,7 +44,7 @@ export default function NeedCard({ need }: NeedCardProps) {
             <span className="text-read">of {formatMoney(need.goal)}</span>
           </span>
           <span
-            className={`shrink-0 font-sans text-[12.5px] font-medium uppercase tracking-[0.08em] md:text-[13px] ${
+            className={`shrink-0 font-sans text-[12.5px] font-medium uppercase tracking-[0.08em] md:text-sm ${
               need.urgent ? "text-terra" : "text-moss"
             }`}
           >

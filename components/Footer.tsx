@@ -51,7 +51,7 @@ export default function Footer() {
           </div>
           {columns.map((col) => (
             <div key={col.title}>
-              <h5 className="mb-4 font-sans text-[13px] font-semibold uppercase tracking-[0.11em] text-ink-2">
+              <h5 className="mb-4 font-sans text-sm font-semibold uppercase tracking-[0.11em] text-ink-2">
                 {col.title}
               </h5>
               {col.links.map((link) => (

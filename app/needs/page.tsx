@@ -84,7 +84,7 @@ export default function NeedsPage() {
           </Reveal>
 
           <Reveal delay={220}>
-            <div className="mt-8 flex flex-col flex-wrap gap-3 font-sans text-[12.5px] font-medium uppercase leading-snug tracking-[0.1em] text-read sm:flex-row sm:gap-0 md:text-[13px]">
+            <div className="mt-8 flex flex-col flex-wrap gap-3 font-sans text-[12.5px] font-medium uppercase leading-snug tracking-[0.1em] text-read sm:flex-row sm:gap-0 md:text-sm">
               {heroPromises.map((p, i) => (
                 <span
                   key={p}
@@ -122,7 +122,7 @@ export default function NeedsPage() {
                     prefix={stat.prefix}
                   />
                 </strong>
-                <span className="font-sans text-[12.5px] font-medium uppercase tracking-[0.1em] text-read md:text-[13px]">
+                <span className="font-sans text-[12.5px] font-medium uppercase tracking-[0.1em] text-read md:text-sm">
                   {stat.label}
                 </span>
               </Reveal>

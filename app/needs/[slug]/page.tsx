@@ -48,7 +48,7 @@ export default function NeedDetailPage({ params }: PageProps) {
       <div className="mx-auto max-w-container px-[clamp(24px,5vw,80px)] pt-6">
         <Link
           href="/needs"
-          className="inline-flex items-center gap-2 font-sans text-[13px] uppercase tracking-[0.15em] text-mute transition-colors hover:text-ink"
+          className="inline-flex items-center gap-2 font-sans text-sm uppercase tracking-[0.15em] text-mute transition-colors hover:text-ink"
         >
           <span aria-hidden>←</span> All missionary needs
         </Link>
@@ -174,7 +174,7 @@ export default function NeedDetailPage({ params }: PageProps) {
                               : "border-hair bg-paper",
                         ].join(" ")}
                       />
-                      <div className="mb-1.5 font-sans text-[13px] uppercase tracking-[0.1em] text-mute">
+                      <div className="mb-1.5 font-sans text-sm uppercase tracking-[0.1em] text-mute">
                         {step.date}
                       </div>
                       <div className="mb-1.5 font-serif text-[20px] font-normal leading-[1.3] text-ink">
@@ -201,7 +201,7 @@ export default function NeedDetailPage({ params }: PageProps) {
                     key={`${update.date}-${i}`}
                     className="border-b border-hair-soft py-7 last:border-b-0"
                   >
-                    <div className="mb-3 font-sans text-[13px] uppercase tracking-[0.1em] text-mute">
+                    <div className="mb-3 font-sans text-sm uppercase tracking-[0.1em] text-mute">
                       {update.date}
                     </div>
                     <h3 className="mb-3.5 font-serif text-[23px] font-normal leading-[1.25] text-ink">
@@ -233,7 +233,7 @@ export default function NeedDetailPage({ params }: PageProps) {
 
                 <Link
                   href="#"
-                  className="mt-6 inline-block font-sans text-[13px] uppercase tracking-[0.15em] text-terra transition-colors hover:text-terra-deep"
+                  className="mt-6 inline-block font-sans text-sm uppercase tracking-[0.15em] text-terra transition-colors hover:text-terra-deep"
                 >
                   All updates →
                 </Link>
@@ -261,7 +261,7 @@ export default function NeedDetailPage({ params }: PageProps) {
                       <h4 className="mb-1 font-serif text-[22px] font-normal leading-tight tracking-tight">
                         {hospital.name}
                       </h4>
-                      <div className="mb-2.5 font-sans text-[13px] uppercase tracking-[0.12em] text-mute">
+                      <div className="mb-2.5 font-sans text-sm uppercase tracking-[0.12em] text-mute">
                         {hospital.location}, {hospital.country} · Founded{" "}
                         {hospital.founded} · {hospital.beds} beds
                       </div>
@@ -270,7 +270,7 @@ export default function NeedDetailPage({ params }: PageProps) {
                       </p>
                       <Link
                         href={`/hospitals/${hospital.slug}`}
-                        className="mt-3 inline-block font-sans text-[13px] uppercase tracking-[0.15em] text-terra transition-colors hover:text-terra-deep"
+                        className="mt-3 inline-block font-sans text-sm uppercase tracking-[0.15em] text-terra transition-colors hover:text-terra-deep"
                       >
                         Tour the hospital →
                       </Link>

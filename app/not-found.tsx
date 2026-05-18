@@ -7,7 +7,7 @@ export default function NotFound() {
     <>
       <Header />
       <section className="container-page py-32 text-center">
-        <div className="font-sans text-[13px] uppercase tracking-[0.16em] text-mute">
+        <div className="font-sans text-sm uppercase tracking-[0.16em] text-mute">
           404
         </div>
         <h1 className="mx-auto mt-6 max-w-[18ch] font-serif text-[clamp(48px,7vw,96px)] font-light leading-none tracking-[-0.03em]">
